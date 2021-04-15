@@ -1,0 +1,19 @@
+<h1 style="color: red">Thông tin chi tiết : {{book.name}}</h1>
+
+<style>
+  h4{
+    width:350px;
+    word-wrap:break-word;
+    margin-left: 80px;
+  }
+</style>
+<form (ngSubmit)="viewBook(book.id)">
+  <h3 style="color: red">Tên:</h3>
+  <h4>-{{book.name}}</h4>
+  <h3 style="color: red">Tác giả:</h3>
+  <h4>-{{book.author}}</h4>
+  <h3 style="color: red">Mô tả:</h3>
+  <h4>-{{book.description}}</h4>
+  <br>
+  <button class="btn btn-info" [routerLink]="'/'">Quay lại</button>
+</form>

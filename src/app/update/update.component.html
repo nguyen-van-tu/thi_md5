@@ -1,0 +1,43 @@
+<h1>Sửa sách</h1>
+<style>
+  h3{
+    color: red;
+  }
+  input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #e9d8f4;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  textarea[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #e9d8f4;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+
+  input[type=text]:focus {
+    border: 3px solid #58257b;
+  }
+  textarea[type=text]:focus {
+    border: 3px solid #58257b;
+  }
+</style>
+<form (ngSubmit)="updateBook(book.id)">
+  <h3>Tên </h3>
+  <input name = "name" type="text" [(ngModel)]="book.name">
+  <h3>Tác giả</h3>
+  <input name = "author" type="text" [(ngModel)]="book.author">
+  <h3>Mô tả</h3>
+  <textarea rows="10" cols="80" name="description" type="text" [(ngModel)]="book.description"></textarea><br><br>
+  <button class="badge-success" type="submit" >Cập nhật</button>
+
+</form>

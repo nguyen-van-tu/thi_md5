@@ -1,0 +1,98 @@
+<!--<h1>Danh sách cuốn sách: {{books.length}}</h1>-->
+<h1 class="ribbon">
+  <strong class="ribbon-content">Danh sách cuốn sách: {{books.length}} cuốn</strong>
+</h1>
+<style>
+  .ribbon {
+    font-size: 16px !important;
+    /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+    width: 50%;
+
+    position: relative;
+    background: #ba89b6;
+    color: #fff;
+    text-align: center;
+    padding: 1em 2em; /* Adjust to suit */
+    margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+  }
+  .ribbon:before, .ribbon:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -1em;
+    border: 1.5em solid #986794;
+    z-index: -1;
+  }
+  .ribbon:before {
+    left: -2em;
+    border-right-width: 1.5em;
+    border-left-color: transparent;
+  }
+  .ribbon:after {
+    right: -2em;
+    border-left-width: 1.5em;
+    border-right-color: transparent;
+  }
+  .ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+    content: "";
+    position: absolute;
+    display: block;
+    border-style: solid;
+    border-color: #804f7c transparent transparent transparent;
+    bottom: -1em;
+  }
+  .ribbon .ribbon-content:before {
+    left: 0;
+    border-width: 1em 0 0 1em;
+  }
+  .ribbon .ribbon-content:after {
+    right: 0;
+    border-width: 1em 1em 0 0;
+  }
+</style>
+<style >
+  table, th, td , tr{
+    /*border:1px solid #ccc;*/
+  }
+  table{
+    border-collapse:collapse;
+  }
+  tr:hover{
+    background-color:#ddd;
+    cursor:pointer;
+  }
+  table{
+    padding: 8px; border: 5px dashed #FF4500; word-wrap: break-word;
+
+  }
+
+
+</style>
+<button class="badge-light"><a  routerLink="create">Thêm sách mới</a ></button>
+<br>
+<br>
+
+<table class="table table-striped" border="1px">
+  <tr style="background: #ffff56">
+
+    <td>#</td>
+    <td>Tên</td>
+    <td>Tác giả</td>
+    <td>Chọn</td>
+  </tr>
+  <tr *ngFor="let book of books ; let i = index" >
+    <td>{{i +1}}</td>
+    <td>
+      <a [routerLink]="'view/'+book.id">
+      {{book.name}}
+      </a>
+    </td>
+    <td>
+      {{book.author}}
+    </td>
+    <td>
+      <button type="button" class="btn btn-outline-success" [routerLink]="'update/'+book.id">Sửa</button>
+      <button type="button" class="btn btn-outline-danger" [routerLink]="'delete/'+book.id">Xóa</button>
+  </tr>
+</table>
